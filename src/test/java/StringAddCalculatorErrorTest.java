@@ -6,19 +6,19 @@ public class StringAddCalculatorErrorTest {
     @Test
     void splitAndSumOneWrongLetter() {
         assertThatThrownBy(() -> StringAddCalculator.splitAndSum("*"))
-                .isInstanceOf(NumberFormatException.class);
+                .isInstanceOf(RuntimeException.class).hasMessageContaining("불완전식");;
     }
 
     @Test
     void splitAndSumNotStartNumber() {
         assertThatThrownBy(() -> StringAddCalculator.splitAndSum(":9,2"))
-                .isInstanceOf(RuntimeException.class).hasMessageContaining("식이 완벽하지 않습니다.");
+                .isInstanceOf(RuntimeException.class).hasMessageContaining("불완전식");
     }
 
     @Test
     void splitAndSumNotEndNumber() {
         assertThatThrownBy(() -> StringAddCalculator.splitAndSum("9,2:"))
-                .isInstanceOf(RuntimeException.class).hasMessageContaining("식이 완벽하지 않습니다.");
+                .isInstanceOf(RuntimeException.class).hasMessageContaining("불완전식");
     }
 
     @Test
