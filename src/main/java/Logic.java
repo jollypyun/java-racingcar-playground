@@ -1,12 +1,18 @@
+import java.util.List;
+
 public class Logic {
-    public Boolean checkNameLength(String carName) {
-        return carName.length() <= 5;
+
+    public Car forwardCheck(Car car, Integer number) {
+        Integer position = car.getPosition();
+        if(number >= 4) {
+            position += 1;
+            car.setPosition(position);
+            return car;
+        }
+        return car;
     }
 
-    public void checkCarSplit(String text) {
-        String[] cars = text.split(",");
-        for (String car : cars) {
-            checkNameLength(car);
-        }
+    public Integer makeRandom() {
+        return (int)(Math.random() * 10);
     }
 }
